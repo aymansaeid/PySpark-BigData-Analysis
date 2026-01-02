@@ -1,7 +1,6 @@
-# Big Data Processing with Apache Spark
-## MapReduce, Machine Learning, and SQL Applications
+# Big Data Processing with Apache Spark ( MapReduce , ML , SQL )
 
----
+
 
 ## 1. Introduction
 
@@ -48,9 +47,13 @@ MapReduce is a two-phase programming model designed for processing large dataset
 
 Spark RDDs (Resilient Distributed Datasets) were used instead of DataFrames to allow low-level control over text processing.
 
+<img width="945" height="672" alt="image" src="https://github.com/user-attachments/assets/cd5af09a-e8f3-4cd8-8172-2947b8f7e14c" />
+
 - `flatMap()` was used to split text lines into individual words.
 - Text cleaning operations such as `lower()` and punctuation removal were applied to ensure consistent word counting.
 - `reduceByKey()` was used to aggregate word frequencies.
+
+<img width="945" height="803" alt="image" src="https://github.com/user-attachments/assets/3dfafe03-a6f0-40dd-8edb-a5a38d25b08e" />
 
 The output confirmed correct functionality, with meaningful and clean word counts corresponding to the text content.
 
@@ -64,6 +67,8 @@ The objective of this section was to predict the price range of mobile phones (0
 - Random Forest
 
 ### 4.1 Data Preparation
+
+<img width="945" height="508" alt="image" src="https://github.com/user-attachments/assets/67f83cdb-e380-467b-bbfa-bf5356058019" />
 
 Spark ML requires features to be stored in a single vector column. Therefore, a `VectorAssembler` was used to combine relevant feature columns into a single `features` vector. The dataset was split into 80% training and 20% testing data.
 
@@ -79,12 +84,19 @@ A Random Forest classifier was also implemented to capture more complex and non-
 
 Model evaluation was performed using `MulticlassClassificationEvaluator` with accuracy as the metric:
 
+<img width="938" height="581" alt="image" src="https://github.com/user-attachments/assets/2a642296-90ef-48ec-9105-eaba4ac81313" />
+
 - **Logistic Regression Accuracy:** 96%  
 - **Random Forest Accuracy:** 84%
 
 Despite expectations, Logistic Regression outperformed Random Forest. This indicates that the dataset is largely linearly separable, with RAM being the dominant factor influencing price. Random Forest overcomplicated the problem, while Logistic Regression effectively captured the simple underlying pattern.
 
 Feature importance analysis from the Random Forest model confirmed that RAM was overwhelmingly the most influential feature.
+
+<img width="945" height="470" alt="image" src="https://github.com/user-attachments/assets/04255406-3561-408b-bb3b-6565b998d9c6" />
+
+<img width="945" height="590" alt="image" src="https://github.com/user-attachments/assets/dd69c4a5-6f26-4c01-9dbb-1915da3eb26b" />
+
 
 ---
 
@@ -96,13 +108,20 @@ Spark was used as a distributed SQL engine by loading CSV files and registering 
 
 This query joined departments, employee, and salary tables to calculate the average salary and employee count per department. Results showed that the Sales department had the highest average salary, while Development had the largest workforce.
 
+<img width="945" height="732" alt="image" src="https://github.com/user-attachments/assets/d8ecb4fd-384f-4863-9067-a92a1731bc8c" />
+
 ### Query 2: High Earner Profile
 
 The top 20 highest-paid employees were identified using multi-table joins across employees, departments, titles, and salaries. This query demonstrated Spark SQL’s efficiency in handling complex joins.
 
+<img width="945" height="712" alt="image" src="https://github.com/user-attachments/assets/fdd33a3a-d0da-4b65-99a6-e5b9680c6983" />
+
 ### Query 3: Average Salary by Job Title
 
 Average salaries were computed for each job title by joining titles and salaries tables, then grouping and sorting the results to identify the highest-paid roles.
+
+<img width="745" height="678" alt="image" src="https://github.com/user-attachments/assets/fd8d28c2-420e-4a83-bd7e-3dcfa994b142" />
+
 
 ---
 
